@@ -22,23 +22,23 @@ const images = [
 const ulGalleryNode =document.querySelector('.gallery');
 
 const markupListImage = images
-                      .map(({url,alt}) =>`<li class="item"><img class="img" src=${url} alt =${alt}/></li>`)
+                      .map(({url,alt}) =>`<li class="item" ><img class="img" src=${url} alt =${alt} style='display:block; width:370px; height: 294px;'/></li>`)
                       .join('');
 //console.log(markupListImage);
 ulGalleryNode.insertAdjacentHTML("afterbegin", markupListImage); 
 ulGalleryNode.style.cssText ='padding: 15px; margin: 15px; list-style: none; display: flex; gap: 30px;justify-content: center;';
 //console.log(ulGalleryNode); 
 
-const itemsNode = document.querySelectorAll('.item');//масив лішок item - [<li.item>,<li.item>,<li.item>]
-//console.log(itemsNode);
-const itemsArray = Array.from(itemsNode);
-//console.log(itemsArray);
-const liRef = itemsArray.map((element) => {
- // console.log(element); 
-  element.style.cssText = ':hover{transform: scale(1.5)};';
-  element.firstElementChild.style.cssText = "display:block; width:370px; height: 294px;"; //img
-  return element;
-});
+// const itemsNode = document.querySelectorAll('.item');//масив лішок item - [<li.item>,<li.item>,<li.item>]
+// //console.log(itemsNode);
+// const itemsArray = Array.from(itemsNode);
+// //console.log(itemsArray);
+// const liRef = itemsArray.map((element) => {
+//  // console.log(element); 
+//   element.style.cssText = ':hover{transform: scale(1.5)};';
+//   element.firstElementChild.style.cssText = "display:block; width:370px; height: 294px;"; //img
+//   return element;
+// });
 
 
  
