@@ -5,20 +5,15 @@
 // знайде і виведе в консоль текст заголовку елемента 
 //(тегу <h2>) і кількість елементів в категорії (усіх <li>,
 // вкладених в нього).
-const listRef = document.querySelector('#categories');
-console.log("Number of categories: ",listRef.children.length);
+const ulNode = document.querySelector('#categories'); //ul #categories
+console.log("Number of categories: ",ulNode.children.length); //li діти ul #categories
 console.log('');
-const itemsAllCategoriesRef = listRef.children;
 
-// for(let i = 0;i < itemsAllCategoriesRef.length;i+=1){
-//   console.log('Category: ', itemsAllCategoriesRef[i].querySelector('h2').textContent);
-//   console.log('Elements: ', itemsAllCategoriesRef[i].querySelector('ul').children.length);
-//   console.log('');
-// };
-//forEach з псевдомасивом чомусь не працює!
-const trueArrayRef = Array.from(itemsAllCategoriesRef);
-trueArrayRef.forEach(function (element) {
-    console.log('Category: ', element.querySelector('h2').textContent); 
-    console.log('Elements: ', element.querySelector('ul').children.length);
+const listCategoryNodes = ulNode.children;
+//forEach з псевдомасивом  не працює!
+const trueArrayNodes = Array.from(listCategoryNodes);
+trueArrayNodes.forEach(function (element) {
+    console.log('Category: ', element.querySelector('h2').textContent); //прочитали h2 кожної категорії
+    console.log('Elements: ', element.querySelector('ul').children.length);//в кожній категорії дітей
   console.log('');
  });
