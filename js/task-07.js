@@ -8,8 +8,8 @@ const inputNode = document.querySelector("#font-size-control");
 const textNode = document.querySelector("#text");
 
 const ChangeFontSize =(event) =>{
-     //console.log(event.currentTarget.value);//string
-     //console.log(typeof(textNode.style.fontSize));//string
+     //console.log(typeof(event.currentTarget.value));  //string
+     //console.log(typeof(textNode.style.fontSize));   //string
      textNode.style.fontSize = event.currentTarget.value+"px";
 
 };

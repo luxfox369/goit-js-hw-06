@@ -19,14 +19,28 @@ const images = [
 //і метод insertAdjacentHTML().
 //Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
 //Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
-const ulGalleryNode =document.querySelector('.gallery');
+const ulGalleryNode = document.querySelector('.gallery');
 
+
+ulGalleryNode.style.cssText ='padding: 15px; margin: 15px; list-style: none; display: flex; gap: 30px;justify-content: center;';
 const markupListImage = images
-                      .map(({url,alt}) =>`<li class="item" ><img class="img" src=${url} alt =${alt} style='display:block; width:370px; height: 294px;'/></li>`)
+                      .map(({url,alt}) =>`<li class="item" ><img class="pict" src=${url} alt =${alt} style='display:block; width:370px; height: 294px;'/></li>`)
                       .join('');
 //console.log(markupListImage);
 ulGalleryNode.insertAdjacentHTML("afterbegin", markupListImage); 
-ulGalleryNode.style.cssText ='padding: 15px; margin: 15px; list-style: none; display: flex; gap: 30px;justify-content: center;';
+//
+//так дабавити/забрати класс :hover {transform:scale(1.5)}
+// const imgRef = document.querySelectorAll('.pict');
+
+// imgRef.addEventListener('click', scale);
+// imgRef.addEventListener('blur', unscale);
+
+// const  scale =   () => imgRef.classList.add('pict');
+// const  unscale = () => imgRef.classList.remove('pict');
+
+  
+
+
 //console.log(ulGalleryNode); 
 
 // const itemsNode = document.querySelectorAll('.item');//масив лішок item - [<li.item>,<li.item>,<li.item>]
