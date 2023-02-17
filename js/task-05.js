@@ -7,9 +7,9 @@
 const inputNode = document.querySelector('#name-input');
 const outputNode= document.querySelector('#name-output');
 //console.log(inputNode);
-console.log(outputNode);
+//console.log(outputNode);
 inputNode.addEventListener('input',(event) =>{
-    console.log(event.currentTarget);
+    console.log(event.currentTarget.value);
     outputNode.textContent = event.currentTarget.value;
     if (event.currentTarget.value ==="")outputNode.textContent = 'Anonymous';
 });
