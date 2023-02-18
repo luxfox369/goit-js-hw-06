@@ -12,25 +12,34 @@
 // Виведи об'єкт із введеними даними в консоль і 
 //очисти значення полів форми методом reset.
 
-const formNode = document.querySelector(".login-form");
-//console.log(formNode);
+
+var inputMailRef = document.querySelector("input[name=email]")
+var inputPasswordRef = document.querySelector("input[name=password]")
+var formNode = document.querySelector(".login-form");
+var successRef = document.querySelector(".success");
+
+const removeSuccess = () => { if (successRef) successRef.remove(); };
+inputMailRef.addEventListener('input', removeSuccess);
+inputPasswordRef.addEventListener('input', removeSuccess);
 
 const validator =(event)=>{
-  
     event.preventDefault();
     const { elements: { email, password } } = event.currentTarget;
     console.log(event); //currentTarget null ???
 
 if(email.value === "" || password.value === "") alert("Please fill all the fieds");
    else {
-   
-     formNode.insertAdjacentHTML("afterend","<p style ='color: green;font-size: 25px;'>You are succesfull have loged in!</p>");
-     console.log(`{email: ${email.value},password: ${password.value}}`);
+     formNode.insertAdjacentHTML("afterend","<p class ='success'style ='color: green;font-size: 25px;'>You are successfull have loged in!</p>");
+    console.log(`{email: ${email.value},password: ${password.value}}`);
+    successRef = document.querySelector(".success");
+    // console.log('successRef ',successRef);
      event.currentTarget.reset();
     }
 };
 
-formNode.addEventListener('submit',validator);
+formNode.addEventListener('submit', validator);
+
+
 
     //elem.style.cssText ="background:red ;color:#fff;padding:10px"; //коли декілька властивостей
     //elem.style.border = "5px double red";                          //коли одна
