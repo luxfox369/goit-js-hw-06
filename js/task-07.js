@@ -3,15 +3,12 @@
 //інлайн-стиль span#text, оновлюючи властивість
 // font-size. В результаті, перетягуючи повзунок,
 // буде змінюватися розмір тексту.
-
-const inputNode = document.querySelector("#font-size-control");
-const textNode = document.querySelector("#text");
-
-const ChangeFontSize =(event) =>{
-     //console.log(typeof(event.currentTarget.value));  //string
-     //console.log(typeof(textNode.style.fontSize));   //string
-     textNode.style.fontSize = event.currentTarget.value+"px";
-
+const refs = {
+     input : document.querySelector("#font-size-control"),
+     text : document.querySelector("#text"),
+}
+const onFontSizeRange =(event) =>{
+   refs.text.style.fontSize = event.currentTarget.value+"px";
 };
 
-inputNode.addEventListener("input",ChangeFontSize);
+refs.input.addEventListener("input",onFontSizeRange);

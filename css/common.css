@@ -33,15 +33,3 @@ button {
 #validation-input.invalid {
   border-color: #f44336;
 }
-.pict {
-  cursor: pointer;
-  border: 3px dotted rgb(12, 143, 126);
-  border-radius: 10%;
-  transition: transform 1s ease-in-out;
-}
-
-.pict:hover {
-  border: 3px dotted rgb(149, 16, 16);
-  border-radius: 20%;
-  transform: scale(1.5);
-}

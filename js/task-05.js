@@ -4,13 +4,13 @@
 //Якщо інпут порожній, у спані повинен відображатися 
 //рядок "Anonymous".
 
-const inputNode = document.querySelector('#name-input');
-const outputNode= document.querySelector('#name-output');
-//console.log(inputNode);
-//console.log(outputNode);
-inputNode.addEventListener('input',(event) =>{
-    console.log(event.currentTarget.value);
-    outputNode.textContent = event.currentTarget.value;
-    if (event.currentTarget.value ==="")outputNode.textContent = 'Anonymous';
+const refs = {
+    input : document.querySelector('#name-input'),
+    output : document.querySelector('#name-output'),
+}
+
+refs.input.addEventListener('input',(event) =>{
+   refs.output.textContent = event.currentTarget.value;
+    if (event.currentTarget.value === "")refs.output.textContent = 'Anonymous';
 });
-//value в input це введений контент/ а в події event.currentTarget.value
+//value в input це  контент/ а в події це event.currentTarget.value

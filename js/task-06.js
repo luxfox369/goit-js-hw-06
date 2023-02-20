@@ -10,19 +10,17 @@
 //valid і invalid, які ми вже додали у вихідні файли
 //завдання.
 
-const inputNode = document.querySelector("#validation-input");
+const refs = {
+    input : document.querySelector("#validation-input"),
+};
 
-inputNode.addEventListener("blur", CheckLenght);
+refs.input.addEventListener("blur", onInputCheckLenght);
 
-function CheckLenght(event) {
-   
-    if (event.currentTarget.value.length === Number(inputNode.dataset.length)) {
-        inputNode.classList.add('valid');
-        if (inputNode.classList.contains('invalid')) inputNode.classList.remove('invalid');
-    }
-       
-    else {
-        inputNode.classList.add('invalid');
-        if (inputNode.classList.contains('valid')) inputNode.classList.remove('valid');
-    }
-}
+
+function onInputCheckLenght(event) {
+    refs.input.classList.add('invalid');
+    if (event.currentTarget.value.trim().length === Number(refs.input.dataset.length)) 
+        refs.input.classList.replace('invalid', 'valid');
+    
+  
+};
