@@ -25,36 +25,38 @@ const refs = {
 const removeSuccess = () => {
     if (refs.success)  refs.success.remove();
 };
-console.log(refs.success);
+// console.log(refs.success);
 refs.inputMail.addEventListener("input", removeSuccess);
 refs.inputPassword.addEventListener("input", removeSuccess);
 
 const onFormValidator = (event) => {
   event.preventDefault();
   //console.log('event.currentTarget.elements ',event.currentTarget.elements);
-   const formData = new FormData(event.currentTarget);
-    formData.forEach((value,name) => {
-    console.log( 'name:',name,' value:',value);
-    });
+  
   const { email, password } = event.currentTarget.elements; //elements це колекція всіх всіх ел-тів refs.form input та button форми
-  let isUser = "";
-  if (email.value.trim() === "" || password.value.trim() === "")
-    alert("Please fill all the fieds");
+ 
+    if (email.value.trim() === "" || password.value.trim() === "") {
+        alert("Please fill all the fieds");
+        return;
+    }
   else {
-      //масив users є на горі
-    isUser = users.find(
-      ({ mail, pass }) =>
-        email.value.trim() === mail && password.value.trim() === pass
-    );
-  }
-  if (isUser) {
+     
     refs.form.insertAdjacentHTML(
       "afterend",
       "<p class ='success'style ='color: green;font-size: 25px;'>You are successfull have loged in!</p>"
     );
-    refs.success = document.querySelector(".success");  
+        refs.success = document.querySelector(".success");
+        
+        const formData = new FormData(event.currentTarget);
+        console.log(formData);
+    // formData.forEach((value,name) => {
+    //     console.log(name);
+    //     console.log(value);
+    // });
     event.currentTarget.reset();
-  } else alert("UnKnown person,please input correct data or register ");
+    return formData ;
+   } 
+    
 };
 
 refs.form.addEventListener("submit", onFormValidator);

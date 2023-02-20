@@ -7,6 +7,9 @@ const refs = {
      input : document.querySelector("#font-size-control"),
      text : document.querySelector("#text"),
 }
+let startSize = refs.input.value = 25;
+refs.text.style.fontSize = startSize + "px";
+    
 const onFontSizeRange =(event) =>{
    refs.text.style.fontSize = event.currentTarget.value+"px";
 };

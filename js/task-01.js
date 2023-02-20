@@ -7,12 +7,10 @@
 // вкладених в нього).
 
 const refs ={
-  
-  ulMain : document.querySelector('#categories'),
- 
- };
+   ulMain : document.querySelector('#categories'),
+  };
 const  liMain = refs.ulMain.children;
-   
+console.log(refs.ulMain.children);
 console.log("Number of categories: ",refs.ulMain.children.length); //li діти ul #categories
 console.log('');
 
