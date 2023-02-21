@@ -25,7 +25,7 @@ const refs ={
      inputAmount:document.querySelector('input'),
      btnCreate : document.querySelector('[data-create]'),
      btnDestroy: document.querySelector('[data-destroy]'),
-     divBoxes: document.querySelector('#boxes'),
+     divBoxes:   document.querySelector('#boxes'),
 };
 
 function createBoxes() {
@@ -39,7 +39,7 @@ function createBoxes() {
      markup += `<div style = 'width:${start + step * i}px;height:${start + step * i}px;background-color:${getRandomHexColor()};'></div>`;
    }
    refs.divBoxes.innerHTML = markup;
-  refs.inputAmount.value = 0;
+   refs.inputAmount.value = 0;
   return markup;
  }
 const onDivClear = () => refs.divBoxes.innerHTML = "";

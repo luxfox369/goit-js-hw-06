@@ -17,13 +17,12 @@ const users = [
   { mail: "maria@gmail.com", pass: "321" },
 ];
 const refs = {
-    inputMail: document.querySelector("input[name=email]"),
-    inputPassword: document.querySelector("input[name=password]"),
-    form: document.querySelector(".login-form"),
-
+  inputMail: document.querySelector("input[name=email]"),
+  inputPassword: document.querySelector("input[name=password]"),
+  form: document.querySelector(".login-form"),
 };
 const removeSuccess = () => {
-    if (refs.success)  refs.success.remove();
+  if (refs.success) refs.success.remove();
 };
 // console.log(refs.success);
 refs.inputMail.addEventListener("input", removeSuccess);
@@ -32,31 +31,29 @@ refs.inputPassword.addEventListener("input", removeSuccess);
 const onFormValidator = (event) => {
   event.preventDefault();
   //console.log('event.currentTarget.elements ',event.currentTarget.elements);
-  
+
   const { email, password } = event.currentTarget.elements; //elements це колекція всіх всіх ел-тів refs.form input та button форми
- 
-    if (email.value.trim() === "" || password.value.trim() === "") {
-        alert("Please fill all the fieds");
-        return;
-    }
-  else {
-     
+
+  if (email.value.trim() === "" || password.value.trim() === "") {
+    alert("Please fill all the fieds");
+    return;
+  } else {
     refs.form.insertAdjacentHTML(
       "afterend",
       "<p class ='success'style ='color: green;font-size: 25px;'>You are successfull have loged in!</p>"
     );
-        refs.success = document.querySelector(".success");
-        
-        const formData = new FormData(event.currentTarget);
-        console.log(formData);
+    refs.success = document.querySelector(".success");
+
+    let formData = new FormData(event.currentTarget);
+    console.log(formData);
     // formData.forEach((value,name) => {
-    //     console.log(name);
-    //     console.log(value);
+    //     console.log('name:',name);
+    //     console.log("value:",value);
     // });
+    //console.log(`{email:${email.value},password:${password.value}}`);
     event.currentTarget.reset();
-    return formData ;
-   } 
-    
+    return;
+  }
 };
 
 refs.form.addEventListener("submit", onFormValidator);
