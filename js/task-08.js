@@ -21,19 +21,21 @@ const refs = {
   inputPassword: document.querySelector("input[name=password]"),
   form: document.querySelector(".login-form"),
 };
+//це щоб забрати< p  class="success" >You are succssful loged in</p>
 const removeSuccess = () => {
   if (refs.success) refs.success.remove();
 };
-// console.log(refs.success);
 refs.inputMail.addEventListener("input", removeSuccess);
 refs.inputPassword.addEventListener("input", removeSuccess);
 
 const onFormValidator = (event) => {
   event.preventDefault();
-  //console.log('event.currentTarget.elements ',event.currentTarget.elements);
-
-  const { email, password } = event.currentTarget.elements; //elements це колекція всіх всіх ел-тів refs.form input та button форми
-
+  // console.log('event.currentTarget.elements ',event.currentTarget.elements);
+  //elements це колекція всіх ел-тів(tags) refs.form тобто input(інтерактивні елементи)
+  //через деструктуризацію витягаємо елементи поокремо згідно name кожного
+  //  console.log("email ", email); //<input name="email"/>
+  //  console.log("password ", password); // <input name="password"/>
+  const { email, password } = event.currentTarget.elements;
   if (email.value.trim() === "" || password.value.trim() === "") {
     alert("Please fill all the fieds");
     return;
@@ -43,15 +45,22 @@ const onFormValidator = (event) => {
       "<p class ='success'style ='color: green;font-size: 25px;'>You are successfull have loged in!</p>"
     );
     refs.success = document.querySelector(".success");
-
-    let formData = new FormData(event.currentTarget);
-    console.log(formData);
-    // formData.forEach((value,name) => {
-    //     console.log('name:',name);
-    //     console.log("value:",value);
-    // });
-    //console.log(`{email:${email.value},password:${password.value}}`);
-    event.currentTarget.reset();
+    //1й варіант створення обєкта
+    let formData = new FormData(event.currentTarget); //<form>...</form>
+    let objFromFormData = {};
+    //екземпляр класа FormData можна ітерувати по інтерактивних полях у яких key це name   а значення це value
+    formData.forEach((value, name) => {
+      objFromFormData[name] = value; //в [] стоїть змінна = ключ обєкта /якщо не змінна то ключ через крапку
+    });
+    console.log("objFromFormData: ", objFromFormData);
+    //2й варіант вручну через elements
+    let objFromElements = {
+      email: email.value, // 1-ше поле
+      password: password.value, //2-ге поле
+    };
+    console.log("objFromElements: ", objFromElements);
+    event.currentTarget.reset(); //reset currentTarget це ксидання всіх value форми
+    // console.log(event.currentTarget);
     return;
   }
 };
