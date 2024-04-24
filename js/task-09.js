@@ -6,19 +6,20 @@
 
 
 
+const refs = {
+  body: document.body,
+  span:document.querySelector(".color"),
+  btn: document.querySelector(".change-color")
+}
+const OnClick = (evt) => {
+  let randomColor = getRandomHexColor();
+  refs.body.style.backgroundColor = `${randomColor}`;
+  refs.span.textContent = randomColor;
+}
+
+refs.btn.addEventListener("click", OnClick);
+
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
-const refs = {
-  body: document.body,
-  divWidget : document.querySelector(".widget"),
-  span : document.querySelector(".color"),
-  btn  : document.querySelector(".change-color")
-};
-const changeColor =()=>{
-  let newColor = getRandomHexColor();
-  refs.body.style.backgroundColor = `${newColor}`;
-  refs.span.textContent = newColor;
-};
 
-refs.btn.addEventListener('click',changeColor);

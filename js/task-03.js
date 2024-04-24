@@ -19,27 +19,19 @@ const images = [
 //і метод insertAdjacentHTML().
 //Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
 //Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
-
 const refs = {
-  ulGallery: document.querySelector(".gallery"),
-  head: document.head,
-};
-
-const markupListImages = images
-  .map(
-    ({ url, alt }) =>
-      `<li class="item" ><img class="pict" src=${url} alt =${alt} style='display:block; width:270px; height: 194px;'/></li>`
-  )
+list : document.querySelector(".gallery"), 
+head: document.head
+}
+ const markUp = images.map(({ url, alt }) =>
+  `<li class="item" ><img class="pict" src = ${url} alt = ${alt} style="display:block; width:270px; height: 194px;"/></li>`)
   .join("");
+  
 
-let styleMarkUp =
-  "<style>.pict {cursor: pointer;border: 3px dotted rgb(100, 100,100);border-radius: 10%;transition: transform 1s ease-in-out;} .pict:hover {border: 3px dotted rgb(149, 16, 16);transform: scale(1.5);}</style > ";
-
-refs.head.insertAdjacentHTML("beforeend", styleMarkUp);
-
-refs.ulGallery.style.cssText =
-  "padding: 15px; margin: 15px; list-style: none; display: flex; gap: 30px;justify-content: center;";
-refs.ulGallery.insertAdjacentHTML("afterbegin", markupListImages);
+let styleMarkup = "<style>.pict {cursor: pointer;border: 3px dotted rgb(100, 100,100);border-radius: 10%;transition: transform 1s ease-in-out;} .pict:hover {transform: scale(1.5);}</style > ";
 
 
+refs.head.insertAdjacentHTML("beforeend", styleMarkup);
 
+refs.list.style.cssText = "padding :15px;margin:15px;list-style:none;display:flex;flex-direction:column;gap:10px;align-items:center";
+refs.list.insertAdjacentHTML("afterbegin",markUp); 

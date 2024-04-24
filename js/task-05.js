@@ -5,12 +5,10 @@
 //рядок "Anonymous".
 
 const refs = {
-    input : document.querySelector('#name-input'),
-    output : document.querySelector('#name-output'),
+    inputName: document.querySelector('#name-input'),
+    outputName:document.querySelector('#name-output')
 }
-
-refs.input.addEventListener('input',(event) =>{
-   refs.output.textContent = event.currentTarget.value;
-    if (event.currentTarget.value === "")refs.output.textContent = 'Anonymous';
+refs.inputName.addEventListener("input", (evt) => {
+     refs.outputName.textContent = evt.currentTarget.value;
+       if (!evt.currentTarget.value) refs.outputName.textontent = "Anonymous";
 });
-//value в input це  контент/ а в події це event.currentTarget.value

@@ -8,20 +8,21 @@
 //Оновлюй інтерфейс новим значенням змінної counterValue.
 let counterValue = 0;
 const refs = {
-     value :       document.querySelector('#value'),
-     buttonMinus : document.querySelector('[data-action="decrement"]'),
-     buttonPlus :     document.querySelector('[data-action="increment"]'), 
+    minusBut: document.querySelector('[data-action="decrement"]'),
+    plusBut:  document.querySelector('[data-action="increment"]'),
+    val: document.querySelector("#value"),
 }
 
-const onValueMinus  = () => {
-    counterValue -=1;
-    refs.value.textContent = counterValue;
+const onMinus = () => {
+    counterValue -= 1;
+    refs.val.textContent = counterValue;
+};
+const onPlus = () => {
+    counterValue += 1;
+    refs.val.textContent = counterValue;
 };
 
-const onValuePlus = () =>{
-    counterValue +=1;
-    refs.value.textContent = counterValue;
-};
 
-refs.buttonMinus.addEventListener("click",onValueMinus);
-refs.buttonPlus.addEventListener("click",onValuePlus);
+refs.minusBut.addEventListener("click",onMinus);
+refs.plusBut.addEventListener("click",onPlus);
+

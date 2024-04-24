@@ -6,17 +6,16 @@
 //(тегу <h2>) і кількість елементів в категорії (усіх <li>,
 // вкладених в нього).
 
-const refs ={
-   ulMain : document.querySelector('#categories'),
-  };
-const  liMain = refs.ulMain.children;
-console.log(refs.ulMain.children);
-console.log("Number of categories: ",refs.ulMain.children.length); //li діти ul #categories
-console.log('');
-
-//forEach з псевдомасивом  не працює!
-Array.from(liMain).forEach(function (item) {
-    console.log('Category: ', item.querySelector('h2').textContent); //прочитали h2 кожної категорії
-    console.log('Elements: ', item.querySelector('ul').children.length);//в кожній категорії дітей
-  console.log('');
- });
+const refs = {
+  mainList:document.querySelector('#categories')
+}
+//console.log(refs.mainList);
+const items = refs.mainList.children; //масив головних li
+console.log(items.length);
+console.log(Array.from(items));
+Array.from(items)
+  .map((item) => {
+    console.log(item.querySelector('h2').textContent); 
+    console.log(item.querySelector('ul').children.length);
+  
+})

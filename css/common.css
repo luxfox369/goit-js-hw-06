@@ -33,3 +33,13 @@ button {
 #validation-input.invalid {
   border-color: #f44336;
 }
+/*.gallery{
+
+}
+
+.img {
+  width:270px;
+  height:190px;
+  border:2px dashed blue;
+  border-radius: 10px;
+}*/

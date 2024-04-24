@@ -21,30 +21,28 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 }
 
-const refs ={
-     inputAmount:document.querySelector('input'),
-     btnCreate : document.querySelector('[data-create]'),
-     btnDestroy: document.querySelector('[data-destroy]'),
-     divBoxes:   document.querySelector('#boxes'),
-};
+const refs = {
+  box: document.querySelector("#boxes"),
+  amount: document.querySelector("input"),
+  createBtn:document.querySelector("button[data-create]"),
+  destroyBtn:document.querySelector("button[data-destroy]")
+}
+const createBoxes = (amount) => {
+  amount = refs.amount.value;
+  let start = 30;
+  let markUp = '';
+ 
+  for (let i = 1; i <= amount; i += 1,start += 10) {
+      markUp += `<div style = 'padding :${start-5}px;width:${start}px; height:${start}px;background-color:${getRandomHexColor()};'></div>`;
+     // start += 10;
+    }
+    console.log(markUp);
+  refs.box.innerHTML = markUp;
+  refs.box.style = "display:flex;flex-direction:column;gap:5px;align-items:center";
+ // refs.amount.value.reset();
+  
+}
 
-function createBoxes() {
-  let amount = Number(refs.inputAmount.value);
-  const start = 30;
-  const step = 10;
-  let markup = '';
+  refs.createBtn.addEventListener("click", createBoxes);
 
-   for (let i = 0; i < amount; i += 1) {
-     //let boxColor = getRandomHexColor();
-     markup += `<div style = 'width:${start + step * i}px;height:${start + step * i}px;background-color:${getRandomHexColor()};'></div>`;
-   }
-   refs.divBoxes.innerHTML = markup;
-   refs.inputAmount.value = 0;
-  return markup;
- }
-const onDivClear = () => refs.divBoxes.innerHTML = "";
-
-refs.divBoxes.style.cssText = "margin:50px;align-items:center;display:flex;gap:10px;flex-wrap:wrap";
-
-refs.btnCreate.addEventListener('click', createBoxes);
-refs.btnDestroy.addEventListener('click',onDivClear);
+refs.destroyBtn.addEventListener("click", () =>{ refs.box.innerHTML = "";});
